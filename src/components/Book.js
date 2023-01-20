@@ -1,23 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import styles from './Book.module.css';
 
-const Book = () => {
-  const [state, setstate] = useState({
-    name: null,
-    author: null,
-    genre: null,
-    completed: null,
-    currentChapter: null,
-  });
+const Book = (props) => {
+  const { book } = props;
   const {
-    name, author, genre, completed, currentChapter,
-  } = state;
-
+    genre, title, author, completed, currentChapter,
+  } = book;
   return (
-    <>
-      <section>
+    <div className={styles.book}>
+      <section className={styles.col1}>
         <div>
           <p>{genre}</p>
-          <p>{name}</p>
+          <p>{title}</p>
           <p>{author}</p>
           <div>
             <button type="button">Comments</button>
@@ -30,13 +25,17 @@ const Book = () => {
           <p>Completed</p>
         </div>
       </section>
-      <section>
+      <section className={styles.col2}>
         <p>CURRENT CHAPTER</p>
         <p>{currentChapter}</p>
         <button type="button">UPDATE PROGRESS</button>
       </section>
-    </>
+    </div>
   );
+};
+
+Book.propTypes = {
+  book: PropTypes.objectOf(PropTypes.string).isRequired,
 };
 
 export default Book;
