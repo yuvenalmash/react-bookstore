@@ -1,6 +1,8 @@
+import BooksContainer from '../components/BooksContainer';
+
 const Books = () => (
   <>
-    <h1>Books Page</h1>
+    <BooksContainer />
   </>
 );
 

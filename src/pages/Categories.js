@@ -1,7 +1,7 @@
 const Categories = () => (
-  <>
-    <h1>Categories Page</h1>
-  </>
+  <div>
+    <button type="button">Check status</button>
+  </div>
 );
 
 export default Categories;
