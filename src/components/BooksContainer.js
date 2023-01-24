@@ -1,42 +1,16 @@
 import React, { useState } from 'react';
 import BooksList from './BooksList';
 import AddBook from './AddBook';
+import store from '../redux/configureStore';
 
 const BooksContainer = () => {
-  const booksArr = [
-    {
-      title: 'Book1',
-      author: 'author1',
-      genre: 'genre1',
-      completed: '10%',
-      currentChapter: '2',
-    },
-    {
-      title: 'Book2',
-      author: 'author2',
-      genre: 'genre2',
-      completed: '20%',
-      currentChapter: '4',
-    },
-  ];
-
-  const [books, setBooks] = useState(booksArr);
-
-  const addNewBook = (title, genre) => {
-    const newBook = {
-      title,
-      author: 'author1',
-      genre,
-      completed: '0%',
-      currentChapter: '0',
-    };
-    setBooks([...books, newBook]);
-  };
+  const booksArr = store.getState().books;
+  const [books] = useState(booksArr);
 
   return (
     <div>
       <BooksList books={books} />
-      <AddBook addBookProps={addNewBook} />
+      <AddBook addBookProps={BooksList} />
     </div>
   );
 };
