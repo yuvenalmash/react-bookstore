@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import BooksList from './BooksList';
 import AddBook from './AddBook';
-import store from '../redux/configureStore';
 
 const BooksContainer = () => {
-  const booksArr = store.getState().books;
-  const [books] = useState(booksArr);
+  // const booksArr = store.getState().books;
+  const booksArr = useSelector((state) => state.books);
+  // const [books] = useState(booksArr);
 
   return (
     <div>
-      <BooksList books={books} />
+      <BooksList books={booksArr} />
       <AddBook addBookProps={BooksList} />
     </div>
   );
