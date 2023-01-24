@@ -1,7 +1,9 @@
+import CategoriesContainer from '../components/CategoriesContainer';
+
 const Categories = () => (
-  <div>
-    <button type="button">Check status</button>
-  </div>
+  <>
+    <CategoriesContainer />
+  </>
 );
 
 export default Categories;
