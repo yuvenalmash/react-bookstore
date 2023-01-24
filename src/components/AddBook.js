@@ -1,11 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useDispatch, connect } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
 import { addBook } from '../redux/books/books';
-import store from '../redux/configureStore';
-import BooksList from './BooksList';
 
-const AddBook = ({ dispatch }) => {
+const AddBook = () => {
+  const dispatch = useDispatch();
   let title;
   let author;
   let genre;
@@ -15,9 +14,13 @@ const AddBook = ({ dispatch }) => {
     if (!title.value.trim() || !author.value.trim()) {
       return;
     }
-    dispatch(addBook(title.value, author.value, genre.value));
-    const booksArr = store.getState().books;
-    BooksList(booksArr);
+    const bookObj = {
+      title: title.value,
+      author: author.value,
+      genre: genre.value,
+      id: uuidv4(),
+    };
+    dispatch(addBook(bookObj));
   };
 
   return (
@@ -42,10 +45,6 @@ const AddBook = ({ dispatch }) => {
       </button>
     </form>
   );
-};
-
-AddBook.propTypes = {
-  dispatch: PropTypes.func.isRequired,
 };
 
 export default connect()(AddBook);
