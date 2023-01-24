@@ -1,9 +1,9 @@
-const ADD_BOOK = 'ADD_BOOK';
-const REMOVE_BOOK = 'REMOVE_BOOK';
+// Actions
+const ADD_BOOK = 'react-bookstore/books/ADD_BOOK';
+const REMOVE_BOOK = 'react-bookstore/books/REMOVE_BOOK';
 
-// reducer
+// Reducer
 const initialState = [];
-
 const bookReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_BOOK:
@@ -26,7 +26,7 @@ const bookReducer = (state = initialState, action) => {
 };
 export default bookReducer;
 
-// actions
+// Action Creators
 let nextBookId = 2;
 export const addBook = (title, author, genre) => {
   nextBookId += 1;
