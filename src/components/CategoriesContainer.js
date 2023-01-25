@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-import store from '../redux/configureStore';
+import { useDispatch, useSelector } from 'react-redux';
+import { checkStatus } from '../redux/categories/categories';
 
 const CategoriesContainer = () => {
   const [dynamicContent, setDynamicContent] = useState([]);
-  const categories = store.getState().categories[0];
+  const dispatch = useDispatch();
+  const status = useSelector((state) => state.categories);
   const displayStatus = () => {
-    const dynamicEl = React.createElement('p', {}, categories.status);
+    dispatch(checkStatus());
+    const dynamicEl = React.createElement('p', {}, status);
     setDynamicContent(dynamicContent.concat(dynamicEl));
   };
 
