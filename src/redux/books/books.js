@@ -3,18 +3,32 @@ const ADD_BOOK = 'react-bookstore/books/ADD_BOOK';
 const REMOVE_BOOK = 'react-bookstore/books/REMOVE_BOOK';
 
 // Reducer
-const initialState = [];
+const initialState = [
+  {
+    title: 'Book1',
+    author: 'author1',
+    genre: 'genre1',
+    completed: '10%',
+    currentChapter: '2',
+    id: '0',
+  },
+  {
+    title: 'Book2',
+    author: 'author2',
+    genre: 'genre2',
+    completed: '20%',
+    currentChapter: '4',
+    id: '1',
+  },
+];
 const bookReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_BOOK:
       return [
         ...state,
         {
-          id: action.id,
-          title: action.title,
-          author: action.author,
-          genre: action.genre,
-          completed: '0',
+          ...action.payload,
+          completed: '0%',
           currentChapter: '0',
         },
       ];
@@ -27,18 +41,11 @@ const bookReducer = (state = initialState, action) => {
 export default bookReducer;
 
 // Action Creators
-let nextBookId = 2;
-export const addBook = (title, author, genre) => {
-  nextBookId += 1;
-  return (
-    {
-      type: ADD_BOOK,
-      id: toString(nextBookId),
-      title,
-      author,
-      genre,
-    });
-};
+export const addBook = (bookObj) => (
+  {
+    type: ADD_BOOK,
+    payload: bookObj,
+  });
 
 export const removeBook = (id) => ({
   type: REMOVE_BOOK,
