@@ -27,10 +27,7 @@ const bookReducer = (state = initialState, action) => {
       return [
         ...state,
         {
-          id: action.id,
-          title: action.title,
-          author: action.author,
-          genre: action.genre,
+          ...action.payload,
           completed: '0%',
           currentChapter: '0',
         },
@@ -47,10 +44,7 @@ export default bookReducer;
 export const addBook = (bookObj) => (
   {
     type: ADD_BOOK,
-    id: bookObj.id,
-    title: bookObj.title,
-    author: bookObj.author,
-    genre: bookObj.genre,
+    payload: bookObj,
   });
 
 export const removeBook = (id) => ({
