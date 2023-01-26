@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { nanoid } from 'nanoid';
 
 const initialState = [];
 
@@ -6,13 +7,19 @@ const booksSlice = createSlice({
   name: 'books',
   initialState,
   reducers: {
-    bookAdded: (state, action) => {
-      const newBook = {
-        ...action.payload,
-        completed: '0%',
-        currentChapter: '0',
-      };
-      return [...state, newBook];
+    bookAdded: {
+      reducer: (state, action) => {
+        const newBook = {
+          ...action.payload,
+          completed: '0%',
+          currentChapter: '0',
+        };
+        return [...state, newBook];
+      },
+      prepare: (bookObj) => {
+        const id = nanoid();
+        return { payload: { id, ...bookObj } };
+      },
     },
     bookDeleted: (state, action) => (
       state.filter((book) => book.id !== action.payload)
