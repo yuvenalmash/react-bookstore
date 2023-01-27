@@ -1,28 +1,32 @@
 import React from 'react';
-import { connect, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { nanoid } from 'nanoid';
-// import { bookAdded } from '../redux/books/booksSlice';
-import { addNewBook } from '../redux/books/booksSlice';
+import { addNewBook, bookAdded } from '../redux/books/booksSlice';
 
 const AddBook = () => {
   const dispatch = useDispatch();
   let title;
   let author;
-  let genre;
+  let category;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!title.value.trim() || !author.value.trim()) {
       return;
     }
-    const id = nanoid();
+    const newId = nanoid();
     const bookObj = {
-      item_id: id,
-      title: title.value,
-      author: author.value,
-      category: genre.value,
+      item_id: newId, title: title.value, author: author.value, category: category.value,
     };
+    const bookObj2 = {
+      id: newId, title: title.value, author: author.value, category: category.value,
+    };
+    dispatch(bookAdded(bookObj2));
     dispatch(addNewBook(bookObj));
+
+    title.value = '';
+    author.value = '';
+    category.value = 'action';
   };
 
   return (
@@ -37,7 +41,7 @@ const AddBook = () => {
         placeholder="Book author"
         ref={(node) => { author = node; }}
       />
-      <select ref={(node) => { genre = node; }}>
+      <select ref={(node) => { category = node; }}>
         <option value="action">Action</option>
         <option value="scifi">Science Fiction</option>
         <option value="fantasy">Fantasy</option>
@@ -49,4 +53,4 @@ const AddBook = () => {
   );
 };
 
-export default connect()(AddBook);
+export default AddBook;
