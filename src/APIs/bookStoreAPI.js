@@ -1,27 +1,23 @@
 const baseURL = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi';
-const appId = '5PHZk8CiiRMye2JyvULz';
+const appId = 'ze2IbIBGs1ji866fZQZm';
 
 export const getBooks = async () => {
-  try {
-    const response = await fetch(`${baseURL}/apps/${appId}/books`);
-    return await response.json();
-  } catch (err) {
-    return console.log(err);
-  }
+  const response = await fetch(`${baseURL}/apps/${appId}/books`);
+  return response.json();
 };
 
 export const postBook = async (bookObj) => {
-  console.log(bookObj);
-  const response = await fetch(`${baseURL}/apps/${appId}/books`, {
+  await fetch(`${baseURL}/apps/${appId}/books`, {
     method: 'POST',
-    BODY: JSON.stringify(bookObj),
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(bookObj),
   });
-  return response.json();
 };
 
 export const deleteBook = async (itemId) => {
   await fetch(`${baseURL}/apps/${appId}/books/${itemId}`, {
     method: 'DELETE',
-    BODY: JSON.stringify({ item_id: itemId }),
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ item_id: itemId }),
   });
 };
