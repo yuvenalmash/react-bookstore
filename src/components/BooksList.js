@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Book from './Book';
-import { fetchBooks } from '../redux/books/booksSlice';
+import { fetchBooks, selectAllBooks } from '../redux/books/booksSlice';
+// import store from '../redux/configureStore';
 
 const BooksList = () => {
   const dispatch = useDispatch();
-  const books = useSelector((state) => state.books.contents);
+  const books = useSelector(selectAllBooks);
 
   const bookStatus = useSelector((state) => state.books.status);
 

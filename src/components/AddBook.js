@@ -1,7 +1,8 @@
 import React from 'react';
-import { useDispatch, connect } from 'react-redux';
-import { v4 as uuidv4 } from 'uuid';
-import { addBook } from '../redux/books/books';
+import { connect, useDispatch } from 'react-redux';
+import { nanoid } from 'nanoid';
+// import { bookAdded } from '../redux/books/booksSlice';
+import { addNewBook } from '../redux/books/booksSlice';
 
 const AddBook = () => {
   const dispatch = useDispatch();
@@ -9,18 +10,19 @@ const AddBook = () => {
   let author;
   let genre;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!title.value.trim() || !author.value.trim()) {
       return;
     }
+    const id = nanoid();
     const bookObj = {
+      item_id: id,
       title: title.value,
       author: author.value,
-      genre: genre.value,
-      id: uuidv4(),
+      category: genre.value,
     };
-    dispatch(addBook(bookObj));
+    dispatch(addNewBook(bookObj));
   };
 
   return (
