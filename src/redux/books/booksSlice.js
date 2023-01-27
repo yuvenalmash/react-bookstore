@@ -1,10 +1,15 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { nanoid } from 'nanoid';
-import { getBooks } from '../../APIs/bookStoreAPI';
+import { getBooks, postBook } from '../../APIs/bookStoreAPI';
 
 export const fetchBooks = createAsyncThunk(
   'books/fetchBooks',
   async () => getBooks(),
+);
+
+export const addNewBook = createAsyncThunk(
+  'books/addNewBook',
+  async (bookObj) => postBook(bookObj),
 );
 
 const initialState = {
@@ -60,6 +65,9 @@ const booksSlice = createSlice({
       .addCase(fetchBooks.rejected, (state, action) => {
         Object.assign({}, state, { status: 'failed' });
         Object.assign({}, state, { error: action.error.message });
+      })
+      .addCase(addNewBook.fulfilled, (state, action) => {
+        state.books.contents.push(action.payload);
       });
   },
 });
