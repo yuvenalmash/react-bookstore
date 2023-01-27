@@ -1,6 +1,7 @@
+/* eslint-disable array-callback-return */
+/* eslint-disable prefer-object-spread */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { nanoid } from 'nanoid';
-import { getBooks, postBook } from '../../APIs/bookStoreAPI';
+import { deleteBook, getBooks, postBook } from '../../APIs/bookStoreAPI';
 
 export const fetchBooks = createAsyncThunk(
   'books/fetchBooks',
@@ -10,6 +11,11 @@ export const fetchBooks = createAsyncThunk(
 export const addNewBook = createAsyncThunk(
   'books/addNewBook',
   async (bookObj) => postBook(bookObj),
+);
+
+export const removeById = createAsyncThunk(
+  'books/removeById',
+  async (bookId) => deleteBook(bookId),
 );
 
 const initialState = {
@@ -22,20 +28,13 @@ const booksSlice = createSlice({
   name: 'books',
   initialState,
   reducers: {
-    bookAdded: {
-      reducer: (state, action) => {
-        const newBook = {
-          ...action.payload,
-          completed: '0%',
-          currentChapter: '0',
-        };
-        // return [...state, newBook];
-        state.contents.push(newBook);
-      },
-      prepare: (bookObj) => {
-        const id = nanoid();
-        return { payload: { id, ...bookObj } };
-      },
+    bookAdded: (state, action) => {
+      const newBook = {
+        ...action.payload,
+        completed: '0%',
+        currentChapter: '0',
+      };
+      state.contents.push(newBook);
     },
     bookDeleted: (state, action) => (
       state.contents.filter((book) => book.id !== action.payload)
@@ -43,32 +42,33 @@ const booksSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchBooks.pending, (state) => {
-        /* eslint-disable prefer-object-spread */
-        Object.assign({}, state, { status: 'loading' });
-      })
+      .addCase(fetchBooks.pending, (state) => (
+        Object.assign({}, state, { status: 'loading' })
+      ))
       .addCase(fetchBooks.fulfilled, (state, action) => {
         const arr = action.payload;
-        /* eslint-disable array-callback-return */
+        const newArr = [];
         Object.entries(arr).map((entry) => {
           const key = entry[0];
           const value = entry[1];
           const book = {
-            item_id: `${key}`,
+            id: `${key}`,
             title: `${value[0].title}`,
             author: `${value[0].author}`,
-            genre: `${value[0].category}`,
+            category: `${value[0].category}`,
+            completed: '0%',
+            currentChapter: '0',
           };
-          state.contents.push(book);
+          newArr.push(book);
         });
+        return Object.assign({}, state, { contents: newArr });
       })
-      .addCase(fetchBooks.rejected, (state, action) => {
-        Object.assign({}, state, { status: 'failed' });
-        Object.assign({}, state, { error: action.error.message });
-      })
-      .addCase(addNewBook.fulfilled, (state, action) => {
-        state.books.contents.push(action.payload);
-      });
+      .addCase(fetchBooks.rejected, (state, action) => (
+        Object.assign({}, state, { status: 'failed', error: action.error.message })
+      ))
+      .addCase(removeById.fulfilled, (state) => (
+        Object.assign({}, state, { status: 'idle' })
+      ));
   },
 });
 
