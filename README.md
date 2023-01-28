@@ -20,7 +20,6 @@
     - [Prerequisites](#prerequisites)
     - [Setup](#setup)
     - [Usage](#usage)
-    - [Run tests](#run-tests)
     - [Deployment](#deployment)
   - [👥 Authors ](#-authors-)
   - [🔭 Future Features ](#-future-features-)
@@ -40,6 +39,7 @@
 ### Tech Stack <a name="tech-stack"></a>
 
 - <a href="https://reactjs.org/">React.js</a>
+- <a href="https://redux.js.org/">Redux<a>
 
 </details>
 
@@ -49,7 +49,7 @@
 
 - **Add a book**
 - **Remove a book**
-- **Update reading progress**
+- **Update reading progress** (To be implemented)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -57,7 +57,7 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link](https://yourdeployedapplicationlink.com)
+- [Live Demo Link](https://yuvenalmash.github.io/react-bookstore)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -93,13 +93,6 @@ To run the project, execute the following command:
   $ npm start
 ```
 
-### Run tests
-
-To run tests, run the following command:
-```sh
-  $ npm run test
-```
-
 ### Deployment
 
 You can deploy this project using:
@@ -126,8 +119,7 @@ You can deploy this project using:
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **Add more styling**
-- [ ] **Add more functionality**
+- [ ] **Implement update progress**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
