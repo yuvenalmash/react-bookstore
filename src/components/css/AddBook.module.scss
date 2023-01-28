@@ -1,5 +1,5 @@
 $primary-color: #0290ff;
-$line-color: hsl(0, 0%, 74%);
+$secondary-color: hsl(0, 0%, 74%);
 
 .container {
   display: flex;
@@ -8,20 +8,22 @@ $line-color: hsl(0, 0%, 74%);
   padding: 0 20px;
 
   h2 {
-    color: $line-color;
+    color: $secondary-color;
   }
 
   form {
     display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
+    justify-content: space-between;
+    width: 100%;
 
     input {
       padding-left: 10px;
+      width: 28%;
     }
 
     select {
       padding-left: 10px;
+      width: 18%;
     }
   }
 
@@ -31,5 +33,6 @@ $line-color: hsl(0, 0%, 74%);
     padding: 10px 40px;
     border: none;
     border-radius: 4px;
+    width: 18%;
   }
 }

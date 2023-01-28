@@ -13,14 +13,14 @@ const Layout = () => (
           <li>
             <Link to="/">
               <button className="navBtn" type="button">
-                Books
+                BOOKS
               </button>
             </Link>
           </li>
           <li>
             <Link to="/categories">
-              <button className="navBtn" type="button">
-                Categories
+              <button className="navBtn" id="categoriesBtn" type="button">
+                CATEGORIES
               </button>
             </Link>
           </li>

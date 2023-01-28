@@ -10,7 +10,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 20px;
+  padding: 15px 20px;
   border: 1px solid $line-color;
 
   ul {
@@ -29,8 +29,13 @@ nav {
 
 .navBtn {
   border: none;
+  color: rgb(73, 73, 73);
   background-color: rgba(240, 248, 255, 0);
   font-size: 20px;
+}
+
+#categoriesBtn {
+  color: rgb(189, 189, 189);
 }
 
 #user {
