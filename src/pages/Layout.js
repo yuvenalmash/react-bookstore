@@ -1,5 +1,6 @@
 import { Outlet, Link } from 'react-router-dom';
-import './css/Layout.css';
+import './css/Layout.scss';
+import { FaUserAlt } from 'react-icons/fa';
 
 const Layout = () => (
   <main id="mainLayout">
@@ -12,20 +13,20 @@ const Layout = () => (
           <li>
             <Link to="/">
               <button className="navBtn" type="button">
-                Books
+                BOOKS
               </button>
             </Link>
           </li>
           <li>
             <Link to="/categories">
-              <button className="navBtn" type="button">
-                Categories
+              <button className="navBtn" id="categoriesBtn" type="button">
+                CATEGORIES
               </button>
             </Link>
           </li>
         </ul>
       </div>
-      <p>profile</p>
+      <FaUserAlt id="user" />
     </nav>
 
     <Outlet />

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { checkStatus } from '../redux/categories/categories';
 import store from '../redux/configureStore';
+import styles from './css/CategoriesContainer.module.scss';
 
 const CategoriesContainer = () => {
   const [dynamicContent, setDynamicContent] = useState([]);
@@ -15,7 +16,7 @@ const CategoriesContainer = () => {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <button onClick={displayStatus} type="button">Check status</button>
       {dynamicContent}
     </div>
