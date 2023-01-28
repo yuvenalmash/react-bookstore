@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import styles from './Book.module.css';
+import styles from './css/Book.module.scss';
 import { removeById } from '../redux/books/booksSlice';
 
 const Book = (props) => {
@@ -19,23 +19,29 @@ const Book = (props) => {
     <div className={styles.book}>
       <section className={styles.col1}>
         <div>
-          <p>{category}</p>
-          <p>{title}</p>
+          <h3>{category}</h3>
+          <h1>{title}</h1>
           <p>{author}</p>
-          <div>
+          <div className={styles.buttons}>
             <button type="button">Comments</button>
+            <hr />
             <button onClick={handleClick} type="button">Remove</button>
+            <hr />
             <button type="button">Edit</button>
           </div>
         </div>
-        <div>
-          <p>{completed}</p>
-          <p>Completed</p>
+        <div className={styles.completed}>
+          <div className={styles.progress} data-progress="" />
+          <div>
+            <h2>{completed}</h2>
+            <h3>Completed</h3>
+          </div>
         </div>
       </section>
+      <hr />
       <section className={styles.col2}>
         <p>CURRENT CHAPTER</p>
-        <p>{currentChapter}</p>
+        <h3>{currentChapter}</h3>
         <button type="button">UPDATE PROGRESS</button>
       </section>
     </div>

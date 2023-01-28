@@ -1,5 +1,6 @@
 import { Outlet, Link } from 'react-router-dom';
-import './css/Layout.css';
+import './css/Layout.scss';
+import { FaUserAlt } from 'react-icons/fa';
 
 const Layout = () => (
   <main id="mainLayout">
@@ -25,7 +26,7 @@ const Layout = () => (
           </li>
         </ul>
       </div>
-      <p>profile</p>
+      <FaUserAlt id="user" />
     </nav>
 
     <Outlet />
