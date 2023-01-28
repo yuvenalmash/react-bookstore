@@ -2,24 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import styles from './Book.module.css';
-import { removeBook } from '../redux/books/books';
+import { removeById } from '../redux/books/booksSlice';
 
 const Book = (props) => {
   const dispatch = useDispatch();
   const { book } = props;
   const {
-    genre, title, author, completed, currentChapter, id,
+    category, title, author, completed, currentChapter, id,
   } = book;
   const handleClick = (e) => {
     e.preventDefault();
-    dispatch(removeBook(id));
+    dispatch(removeById(id));
   };
 
   return (
     <div className={styles.book}>
       <section className={styles.col1}>
         <div>
-          <p>{genre}</p>
+          <p>{category}</p>
           <p>{title}</p>
           <p>{author}</p>
           <div>
