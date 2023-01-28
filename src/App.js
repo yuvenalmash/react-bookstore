@@ -13,8 +13,8 @@ const App = () => (
       <Routes>
         <Route path="/react-bookstore/" element={<Layout />}>
           <Route index element={<Books />} />
-          <Route path="categories" element={<Categories />} />
-          <Route path="*" element={<NoPage />} />
+          <Route path="/react-bookstore/categories" element={<Categories />} />
+          <Route path="/react-bookstore/*" element={<NoPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

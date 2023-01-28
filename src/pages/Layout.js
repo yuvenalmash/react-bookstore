@@ -11,14 +11,14 @@ const Layout = () => (
             <p id="logo">Bookstore CMS</p>
           </li>
           <li>
-            <Link to="/">
+            <Link to="/react-bookstore">
               <button className="navBtn" type="button">
                 BOOKS
               </button>
             </Link>
           </li>
           <li>
-            <Link to="/categories">
+            <Link to="/react-bookstore/categories">
               <button className="navBtn" id="categoriesBtn" type="button">
                 CATEGORIES
               </button>
