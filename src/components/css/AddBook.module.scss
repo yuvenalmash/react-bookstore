@@ -1,0 +1,35 @@
+$primary-color: #0290FF;
+$line-color: hsl(0, 0%, 74%);
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0 20px;
+
+  h2 {
+    color: $line-color;
+  }
+
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    input {
+      padding-left: 10px;
+    }
+
+    select {
+      padding-left: 10px;
+    }
+  }
+
+  button {
+    color: #fff;
+    background-color: $primary-color;
+    padding: 10px 40px;
+    border: none;
+    border-radius: 4px;
+  }
+}
