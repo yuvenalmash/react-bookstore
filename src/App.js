@@ -11,7 +11,7 @@ const App = () => (
   <Provider store={store}>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path="/react-bookstore/" element={<Layout />}>
           <Route index element={<Books />} />
           <Route path="categories" element={<Categories />} />
           <Route path="*" element={<NoPage />} />
