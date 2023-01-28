@@ -1,0 +1,47 @@
+$primary-color: #0290ff;
+$line-color: hsl(0, 0%, 74%);
+
+#mainLayout {
+  display: flex;
+  flex-direction: column;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  border: 1px solid $line-color;
+
+  ul {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+    align-items: baseline;
+  }
+}
+
+#logo {
+  color: $primary-color;
+  font-size: 40px;
+  font-weight: 730;
+}
+
+.navBtn {
+  border: none;
+  color: rgb(73, 73, 73);
+  background-color: rgba(240, 248, 255, 0);
+  font-size: 20px;
+}
+
+#categoriesBtn {
+  color: rgb(189, 189, 189);
+}
+
+#user {
+  font-size: 20px;
+  color: $primary-color;
+  border: 1px solid $line-color;
+  border-radius: 20px;
+  padding: 8px;
+}

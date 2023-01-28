@@ -1,0 +1,108 @@
+$primary-color: #0290ff;
+$line-color: hsl(0, 0%, 74%);
+
+.book {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid rgb(212, 212, 212);
+  border-radius: 5px;
+  margin: 30px 15px;
+  background-color: #fff;
+
+  hr {
+    color: hsl(0, 0%, 94%);
+    width: 0;
+    height: 60px;
+  }
+}
+
+.col1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 70%;
+
+  h3 {
+    color: $line-color;
+  }
+
+  p {
+    color: $primary-color;
+    font-weight: 400;
+  }
+
+  .buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+
+    hr {
+      height: 16px;
+    }
+  }
+
+  button {
+    border: none;
+    background-color: #0291ff00;
+    color: $primary-color;
+  }
+
+  .completed {
+    display: flex;
+    gap: 12px;
+
+    .progress {
+      display: flex;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: conic-gradient($primary-color 60%, $line-color 40%);
+      font-size: 0;
+    }
+
+    .progress::after {
+      content: attr(data-progress);
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      width: 100%;
+      margin: 3.5px;
+      border-radius: 50%;
+      background: white;
+      font-size: 1rem;
+      text-align: center;
+    }
+
+    h2 {
+      font-weight: 500;
+    }
+  }
+}
+
+.col2 {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  p {
+    color: hsl(0, 0%, 63%);
+    font-size: 15px;
+  }
+
+  h3 {
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  button {
+    border: none;
+    border-radius: 3px;
+    color: hsl(0, 0%, 92%);
+    background-color: $primary-color;
+    padding: 7px 30px;
+    margin-top: 20px;
+  }
+}
