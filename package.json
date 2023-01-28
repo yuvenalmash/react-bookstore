@@ -1,7 +1,7 @@
 {
   "name": "react-bookstore",
   "version": "0.1.0",
-  "homepage": "https://gitname.github.io/react-bookstore",
+  "homepage": "https://yuvenalmash.github.io/react-bookstore",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
