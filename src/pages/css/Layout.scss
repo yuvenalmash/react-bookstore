@@ -1,5 +1,6 @@
-$primary-color: #0290FF;
+$primary-color: #0290ff;
 $line-color: hsl(0, 0%, 74%);
+
 #mainLayout {
   display: flex;
   flex-direction: column;
@@ -12,7 +13,6 @@ nav {
   padding: 12px 20px;
   border: 1px solid $line-color;
 
-
   ul {
     display: flex;
     gap: 40px;
@@ -20,7 +20,6 @@ nav {
     align-items: baseline;
   }
 }
-
 
 #logo {
   color: $primary-color;
