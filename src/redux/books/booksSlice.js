@@ -31,8 +31,8 @@ const booksSlice = createSlice({
     bookAdded: (state, action) => {
       const newBook = {
         ...action.payload,
-        completed: '0%',
-        currentChapter: '0',
+        completed: '60%',
+        currentChapter: 'Chapter 7',
       };
       state.contents.push(newBook);
     },
@@ -56,8 +56,8 @@ const booksSlice = createSlice({
             title: `${value[0].title}`,
             author: `${value[0].author}`,
             category: `${value[0].category}`,
-            completed: '0%',
-            currentChapter: '0',
+            completed: '60%',
+            currentChapter: 'Chapter 7',
           };
           newArr.push(book);
         });
